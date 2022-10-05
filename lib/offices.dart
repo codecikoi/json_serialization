@@ -5,7 +5,7 @@ class OfficesList {
   List<Office> offices;
   OfficesList({required this.offices});
 
-  factory OfficesList.formJson (Map<String, dynamic> json) {
+  factory OfficesList.fromJson (Map<String, dynamic> json) {
 
     var officesJson = json['offices'] as List;
 
@@ -32,7 +32,8 @@ class Office {
     return Office(
         name: json['name'] as String,
         address: json['address'] as String,
-        image: json['image'] as String);
+        image: json['image'] as String,
+    );
   }
 }
 
