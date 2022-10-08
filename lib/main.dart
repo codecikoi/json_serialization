@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:json_1/offices.dart';
+import 'package:json_serializable/json_serializable.dart';
 
 void main() {
   runApp(const MyApp());
