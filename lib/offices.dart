@@ -1,24 +1,25 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:json_annotation/json_annotation.dart';
+import 'package:json_serializable/builder.dart';
 
+part 'offices.g.dart';
+
+@JsonSerializable()
 class OfficesList {
   List<Office> offices;
   OfficesList({required this.offices});
 
-  factory OfficesList.fromJson (Map<String, dynamic> json) {
+  factory OfficesList.fromJson (Map<String, dynamic> json) => _$OfficesListFromJson(json);
 
-    var officesJson = json['offices'] as List;
-
-    List<Office> officesList =
-        officesJson.map((i) => Office.fromJson(i)).toList();
-
-    return OfficesList(
-      offices: officesList,
-    );
-  }
+  Map<String, dynamic> toJson() => _$OfficesListToJson(this);
 }
 
+
+@JsonSerializable()
 class Office {
+
+  @JsonKey()
   final String name;
   final String address;
   final String image;
@@ -28,13 +29,9 @@ class Office {
       required this.address,
       required this.image});
 
-  factory Office.fromJson(Map<String, dynamic> json) {
-    return Office(
-        name: json['name'] as String,
-        address: json['address'] as String,
-        image: json['image'] as String,
-    );
-  }
+  factory Office.fromJson(Map<String, dynamic> json) => _$OfficeFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OfficeToJson(this);
 }
 
 
